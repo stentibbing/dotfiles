@@ -1,0 +1,49 @@
+- name: Bootstrap development environment
+  hosts: localhost
+  connection: local
+  become: true
+
+  pre_tasks:
+    - name: pre-run | update package cache (Debian family)
+      apt: update_cache=yes
+      changed_when: False
+      when: ansible_os_family == "Debian" 
+
+    - name: pre-run | update package cache (RedHat family)
+      dnf: update_cache=yes
+      changed_when: False
+      when: ansible_os_family == "RedHat"
+
+  tasks:
+    - name: Install system packages 
+      ansible.builtin.package:
+        name:
+          - git
+          - zsh
+          - tmux
+          - neovim
+          - kitty
+          - htop
+          - neofetch
+          - golang
+          - firefox
+          - thunderbird
+        state: present
+
+  # Install Node Version Manager
+    - name: Install nvm
+      ansible.builtin.shell: >
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+      args:
+        creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"  
+ 
+  
+  # $ ansible-galaxy collection install community.general
+    - name: Install NPM global packages
+      loop:
+        - yarn
+      community.general.npm:
+        name: "{{ item }}"
+        state: present
+        global: true
+        

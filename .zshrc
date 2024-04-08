@@ -7,7 +7,6 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 alias vi="nvim"
 alias vim="nvim"
-alias cd="z"
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:$HOME/.cargo/env"
