@@ -1,29 +1,31 @@
--- EXAMPLE 
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require("nvchad.configs.lspconfig").capabilities
-
-local lspconfig = require "lspconfig"
-local servers = {
-  "lua_ls",
-  "html",
-  "cssls",
-  "tailwindcss",
-  "tsserver",
-  "svelte",
-  "tailwindcss",
-  "gopls",
-  "templ"
+-- mason's installed tools and running lsp servers
+return {
+    ensure_installed = {
+        "lua-language-server",
+        "stylua",
+        "html-lsp",
+        "css-lsp",
+        "tailwindcss-language-server",
+        "prettierd",
+        "typescript-language-server",
+        "svelte-language-server",
+        "gopls",
+        "goimports",
+        "goimports-reviser",
+        "templ",
+        "intelephense",
+        "pretty-php",
+    },
+    servers = {
+        "lua_ls",
+        "html",
+        "cssls",
+        "tailwindcss",
+        "tsserver",
+        "svelte",
+        "tailwindcss",
+        "gopls",
+        "templ",
+        "intelephense",
+    }
 }
-
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    on_init = on_init,
-    capabilities = capabilities,
-  }
-end
-
--- register filetypes
-vim.filetype.add({ extension = { templ = "templ" } })

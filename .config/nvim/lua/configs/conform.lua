@@ -1,16 +1,10 @@
-local options = {
-  formatters_by_ft = {
+-- formaters by filetype
+return {
     lua = { "stylua" },
     css = { "prettierd" },
     html = { "prettierd" },
     javascript = { "prettierd" },
-    typescript = { "prettierd" }
-  },
-
-  format_on_save = {
-    timeout_ms = 500,
-    lsp_fallback = true,
-  },
+    typescript = { "prettierd" },
+    svelte = { "prettierd" },
+    php = { "pretty-php" },
 }
-
-require("conform").setup(options)

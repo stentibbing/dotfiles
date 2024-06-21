@@ -1,60 +1,77 @@
-require "nvchad.options"
+vim.opt.ruler = false
 
--- add yours here!
+-- set leader key to space
+vim.g.mapleader = " "
+vim.g.maplocalleader = ' '
 
-local o = vim.o
-o.cursorlineopt ='both' -- to enable cursorline!
+-- disable netrw cuz we usin' nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
--- Cursor style
-o.guicursor = "n-v-c:block-Cursor"
+-- cursor style
+vim.opt.guicursor = "n-v-c:block-Cursor"
 
--- Line numbers & relative line numbers
-o.nu = true
-o.relativenumber = true
+-- advanced gui from terminal suppoer
+vim.opt.termguicolors = true
 
--- Wrap lines exceeding window size (not saving into file)
-o.wrap = true
-o.breakindent = true
+-- line numbers & relative line numbers
+vim.opt.nu = true
+vim.opt.relativenumber = true
 
--- Tabs appear 4 spaces
-o.tabstop = 4
-o.shiftwidth = 4
-o.expandtab = true
+-- wrap lines exceeding window size (not saving into file)
+vim.opt.wrap = true
+vim.opt.breakindent = true
 
--- Indentation rules
-o.cindent = true
-o.autoindent = true
-o.smartindent = true
+-- tabs appear 4 spaces
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
-o.swapfile = false
-o.backup = false
+-- indentation rules
+vim.opt.cindent = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
 
-o.hlsearch = false
-o.incsearch = true
+-- swap
+vim.opt.swapfile = false
+vim.opt.backup = false
 
--- Scroll document 8 lines before reaching end of window
-o.scrolloff = 8
-o.signcolumn = "yes"
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
 
--- Wrap guide line
-o.colorcolumn = "120"
+-- scroll document 8 lines before reaching end of window
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
 
--- Set highlight on search
-o.hlsearch = true
+-- wrap guide line
+vim.opt.colorcolumn = "120"
 
--- Enable mouse mode
-o.mouse = 'a'
+-- set highlight on search
+vim.opt.hlsearch = true
 
--- Save undo history
-o.undofile = true
+-- enable mouse mode
+vim.opt.mouse = 'a'
 
--- Case-insensitive searching UNLESS \C or capital in search
-o.ignorecase = true
-o.smartcase = true
+-- save undo history
+vim.opt.undofile = true
 
--- Decrease update time
-o.updatetime = 250
-o.timeoutlen = 300
+-- case-insensitive searching UNLESS \C or capital in search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
--- Set completeopt to have a better completion experience
-o.completeopt = 'menuone,noselect'
+-- decrease update time
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
+
+-- set completeopt to have a better completion experience
+vim.opt.completeopt = 'menuone,noselect'
+
+-- highlight yanked code
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = '*',
+})
