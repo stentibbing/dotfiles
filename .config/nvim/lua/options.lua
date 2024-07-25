@@ -2,7 +2,7 @@ vim.opt.ruler = false
 
 -- set leader key to space
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = ' '
 
 -- disable netrw cuz we usin' nvim-tree
 vim.g.loaded_netrw = 1
@@ -11,11 +11,8 @@ vim.g.loaded_netrwPlugin = 1
 -- cursor style
 vim.opt.guicursor = "n-v-c:block-Cursor"
 
--- advanced gui from terminal support
+-- advanced gui from terminal suppoer
 vim.opt.termguicolors = true
-
--- system clipboard as default
-vim.opt.clipboard = "unnamedplus"
 
 -- line numbers & relative line numbers
 vim.opt.nu = true
@@ -53,7 +50,7 @@ vim.opt.colorcolumn = "120"
 vim.opt.hlsearch = true
 
 -- enable mouse mode
-vim.opt.mouse = "a"
+vim.opt.mouse = 'a'
 
 -- save undo history
 vim.opt.undofile = true
@@ -67,14 +64,14 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 
 -- set completeopt to have a better completion experience
-vim.opt.completeopt = "menuone,noselect"
+vim.opt.completeopt = 'menuone,noselect'
 
 -- highlight yanked code
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = '*',
 })
