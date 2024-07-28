@@ -12,15 +12,15 @@ bindkey '^ ' autosuggest-accept
 
 # oh-my-zsh 
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME=bira
+ZSH_THEME=gruv
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting docker docker-machine docker-compose)
 source $ZSH/oh-my-zsh.sh
 
 # launch tmux at startup
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
- exec tmux
-fi
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#  exec tmux
+# fi
 
 # aliases
 alias vi="nvim"
