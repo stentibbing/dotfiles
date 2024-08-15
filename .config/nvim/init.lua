@@ -1,5 +1,6 @@
 require("options")
 require("lazy_conf")
+require("filetypes")
 require("autocmds")
 require("ui")
 require("keymaps")

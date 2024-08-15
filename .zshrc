@@ -8,19 +8,20 @@ setopt autocd extendedglob
 bindkey -v
 
 # autosuggestion plugin
-bindkey '^ ' autosuggest-accept
+bindkey '^I'   complete-word       # tab complete
+bindkey '^[[Z' autosuggest-accept  # shift-tab autosuggest
 
 # oh-my-zsh 
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME=gruv
+ZSH_THEME=kbuum
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting docker docker-machine docker-compose)
 source $ZSH/oh-my-zsh.sh
 
 # launch tmux at startup
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#  exec tmux
-# fi
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+ exec tmux
+fi
 
 # aliases
 alias vi="nvim"
