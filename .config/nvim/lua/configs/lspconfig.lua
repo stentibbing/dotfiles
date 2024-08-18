@@ -16,7 +16,6 @@ return {
         "templ",
         "intelephense",
         "pretty-php",
-        "checkmake",
     },
     servers = {
         "lua_ls",
