@@ -15,7 +15,7 @@ bindkey '^[[Z' autosuggest-accept  # shift-tab autosuggest
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=kbuum
 
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting docker docker-machine docker-compose)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting docker docker-compose)
 source $ZSH/oh-my-zsh.sh
 
 # launch tmux at startup
