@@ -19,13 +19,15 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting docker docker-compose)
 source $ZSH/oh-my-zsh.sh
 
 # launch tmux at startup
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
- exec tmux
-fi
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#  exec tmux
+# fi
 
 # aliases
 alias vi="nvim"
-alias vim="nvim"
+
+# nvim
+export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # node version manager
 export NVM_DIR="$HOME/.nvm"

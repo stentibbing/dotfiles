@@ -1,6 +1,6 @@
 -- color theme
 vim.opt.background = "dark"
-vim.cmd.colorscheme("rose-pine")
+vim.cmd.colorscheme("catppuccin")
 
 -- lsp diagnostic signs
 local function lspSymbol(name, icon)
