@@ -3,7 +3,7 @@
     "position": "top",
     "exclusive": true,
     "margin-bottom": 0,
-    "height": 32,
+    "height": 30,
     "modules-left": [
         "sway/workspaces"
     ],
@@ -21,30 +21,20 @@
         "all-outputs": true
     },
     "clock": {
-        "format": "{:%H:%M - %d. %b, %A}"
+        "format": "<span font-weight='bold'>{:%H:%M</span>  %A  %d. %b }"
     },
     "group/stats": {
         "orientation": "horizontal",
         "modules": [
             "network#up",
             "network#down",
-            "group/cpu",
+            "cpu",
             "memory"
         ]
     },
-    "group/cpu": {
-        "orientation": "horizontal",
-        "modules": [
-            "custom-cpu",
-            "cpu"
-        ]
-    },
-    "custom-cpu": {
-        "format": "<span font-weight='bold' font='8'>CPU</span>"
-    },
     "cpu": {
         "interval": 5,
-        "format": " {load}%",
+        "format": "CPU {load}%",
         "states": {
             "low": 0,
             "medium": 25,
@@ -53,7 +43,7 @@
     },
     "memory": {
         "interval": 5,
-        "format": "<span font-weight='bold' font='8'>MEM</span> {}%",
+        "format": "MEM {}%",
         "states": {
             "low": 0,
             "medium": 25,
@@ -62,11 +52,11 @@
     },
     "network#up": {
         "interval": 3,
-        "format": "<span font-weight='bold' font='8'>UP</span> {bandwidthUpBytes}"
+        "format": "UP {bandwidthUpBytes}"
     },
     "network#down": {
         "interval": 3,
-        "format": "<span font-weight='bold' font='8'>DN</span> {bandwidthDownBytes}"
+        "format": "DN {bandwidthDownBytes}"
     },
     "group/system": {
         "orientation": "horizontal",
@@ -79,16 +69,16 @@
     "pulseaudio": {
         "format": "{icon}",
         "format-muted": "󰝟 ",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "tooltip": false,
         "format-icons": {
-            "headphone": "󰋋 ",
             "default": [
-                "<span font='14'>󰕿 </span>",
-                "<span font='14'>󰖀 </span>",
-                "<span font='14'>󰕾 </span>"
+                "󰕿 ",
+                "󰖀 ",
+                "󰕾 "
             ]
         },
-        "scroll-step": 1
+        "scroll-step": 10
     },
     "network": {
         "format": "{ifname}",
