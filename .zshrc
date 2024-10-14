@@ -15,19 +15,16 @@ bindkey '^[[Z' autosuggest-accept  # shift-tab autosuggest
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=abzt
 
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting docker docker-compose)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting docker docker-compose web-search)
 source $ZSH/oh-my-zsh.sh
 
 # launch tmux at startup
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
- exec tmux
-fi
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#  exec tmux
+# fi
 
 # aliases
 alias vi="nvim"
-
-# nvim
-export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # node version manager
 export NVM_DIR="$HOME/.nvm"

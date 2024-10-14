@@ -1,0 +1,25 @@
+anchor = top
+width = 100%
+height = 32
+horizontal = true
+font-size = 10
+prompt-text = " "
+font = Roboto
+outline-width = 0
+border-width = 0
+num-results = 10
+ascii-input = true
+
+min-input-width = 120
+result-spacing = 15
+padding-top = 7
+padding-bottom = 0
+padding-left = 12
+padding-right = 12
+
+text-cursor = false
+
+background-color = #282828
+prompt-color = #b8bb26
+selection-color = #b8bb26
+

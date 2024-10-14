@@ -1,0 +1,117 @@
+{
+    "layer": "top",
+    "position": "top",
+    "exclusive": true,
+    "margin-bottom": 0,
+    "height": 32,
+    "modules-left": [
+        "sway/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "group/stats",
+        "group/system"
+    ],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "format": "{name}",
+        "tooltip": false,
+        "all-outputs": true
+    },
+    "clock": {
+        "format": "{:%H:%M - %d. %b, %A}"
+    },
+    "group/stats": {
+        "orientation": "horizontal",
+        "modules": [
+            "network#up",
+            "network#down",
+            "group/cpu",
+            "memory"
+        ]
+    },
+    "group/cpu": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom-cpu",
+            "cpu"
+        ]
+    },
+    "custom-cpu": {
+        "format": "<span font-weight='bold' font='8'>CPU</span>"
+    },
+    "cpu": {
+        "interval": 5,
+        "format": " {load}%",
+        "states": {
+            "low": 0,
+            "medium": 25,
+            "high": 75
+        }
+    },
+    "memory": {
+        "interval": 5,
+        "format": "<span font-weight='bold' font='8'>MEM</span> {}%",
+        "states": {
+            "low": 0,
+            "medium": 25,
+            "high": 75
+        }
+    },
+    "network#up": {
+        "interval": 3,
+        "format": "<span font-weight='bold' font='8'>UP</span> {bandwidthUpBytes}"
+    },
+    "network#down": {
+        "interval": 3,
+        "format": "<span font-weight='bold' font='8'>DN</span> {bandwidthDownBytes}"
+    },
+    "group/system": {
+        "orientation": "horizontal",
+        "modules": [
+            "pulseaudio",
+            "network",
+            "battery"
+        ]
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "󰝟 ",
+        "tooltip": false,
+        "format-icons": {
+            "headphone": "󰋋 ",
+            "default": [
+                "<span font='14'>󰕿 </span>",
+                "<span font='14'>󰖀 </span>",
+                "<span font='14'>󰕾 </span>"
+            ]
+        },
+        "scroll-step": 1
+    },
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "󰖩  ",
+        "format-ethernet": "󰈀 ",
+        "format-disconnected": "󱛅 ",
+        "tooltip": false
+    },
+    "battery": {
+        "format": "{icon}",
+        "format-icons": [
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ],
+        "format-charging": "󰂅 ",
+        "tooltip": false
+    }
+}
