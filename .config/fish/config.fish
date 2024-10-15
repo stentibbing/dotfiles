@@ -2,6 +2,9 @@ if status is-interactive
    # disable greeting
    set -U fish_greeting
 
+   # define config dir for some apps
+   set -gx XDG_CONFIG_HOME $HOME/.config
+
    # nvm
    set -gx NVM_DIR $HOME/.nvm
 
