@@ -21,7 +21,7 @@
         "all-outputs": true
     },
     "clock": {
-        "format": "<span font-weight='bold'>{:%H:%M</span>  %A  %d. %b }"
+        "format": "<span font-weight='bold'>{:%H:%M</span> %A %d. %b}"
     },
     "group/stats": {
         "orientation": "horizontal",
