@@ -5,10 +5,10 @@
     "margin-bottom": 0,
     "height": 30,
     "modules-left": [
-        "sway/workspaces"
+        "clock"
     ],
     "modules-center": [
-        "clock"
+        "sway/workspaces"
     ],
     "modules-right": [
         "group/stats",
@@ -21,7 +21,7 @@
         "all-outputs": true
     },
     "clock": {
-        "format": "<span font-weight='bold'>{:%H:%M</span> %A %d. %b}"
+        "format": "<span font-weight='bold' color='#83a598'>{:%H:%M</span> %A %d. %b}"
     },
     "group/stats": {
         "orientation": "horizontal",
@@ -101,7 +101,7 @@
             "󰂂",
             "󰁹"
         ],
-        "format-charging": "󰂅 ",
+        "format-charging": "󰂄",
         "tooltip": false
     }
 }
