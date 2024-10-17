@@ -16,9 +16,10 @@
     ],
     "sway/workspaces": {
         "disable-scroll": true,
-        "format": "{name}",
+        "format": "{index}",
         "tooltip": false,
-        "all-outputs": true
+        "all-outputs": true,
+        "icon": true
     },
     "clock": {
         "format": "<span font-weight='bold' color='#83a598'>{:%H:%M</span> %A %d. %b}"

@@ -11,7 +11,7 @@ if [ ! -d $folder ];
   exit 1
 fi
 
-file=$(ls $folder | tofi)
+file=$(ls $folder | tofi --prompt-text=" ")
 
 if [ -f "$folder/$file" ]; then
   echo "output * bg $folder/$file fill" > $config
