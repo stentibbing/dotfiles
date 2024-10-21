@@ -3,6 +3,10 @@ local nvim_tree_api = require("nvim-tree.api")
 local harpoon = require("harpoon")
 local builtin = require("telescope.builtin")
 
+-- copy to system clipboard
+map({ "n", "v" }, "<leader>y", [["+y]])
+map("n", "<leader>Y", [["+Y]])
+
 -- nvimtree
 map("n", "<C-n>", function()
 	nvim_tree_api.tree.toggle()
