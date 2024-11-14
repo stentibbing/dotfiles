@@ -1,6 +1,5 @@
--- color theme
 vim.opt.background = "dark"
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("monokai-pro")
 
 -- lsp diagnostic signs
 local function lspSymbol(name, icon)

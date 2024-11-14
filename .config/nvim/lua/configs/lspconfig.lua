@@ -17,6 +17,7 @@ return {
 		"intelephense",
 		"pretty-php",
 		"eslint-lsp",
+		"lemminx",
 	},
 	servers = {
 		"lua_ls",
