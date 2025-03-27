@@ -1,0 +1,156 @@
+# Mod key
+set $mod Mod4
+
+# Arrow keys
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Apps
+set $term kitty
+set $browser firefox
+set $launcher $HOME/.config/bemenu/drun.sh
+set $mail exec kitty aerc
+
+set $laptop_screen 'eDP-1'
+set $external_screen 'HDMI-A-1'
+
+# Displays
+output $laptop_screen pos 0 0 res 1920x1080 scale 1.5
+output $external_screen pos 1920 0 res 3840x2160 scale 2
+
+# Disable internal display on lid close
+bindswitch --locked lid:on output $laptop_screen disable
+bindswitch --locked lid:off output $laptop_screen enable
+
+# Keyboard
+input * {
+    xkb_layout "ee"
+}
+
+# Bindings
+bindsym $mod+Return exec $term
+bindsym $mod+b exec $browser
+bindsym $mod+Space exec $launcher
+bindsym $mod+m exec $mail
+
+bindsym $mod+Alt+r reload
+bindsym $mod+q kill
+bindsym $mod+e exec swaymsg exit
+bindsym $mod+Shift+s exec shutdown -h now
+bindsym $mod+Shift+r exec reboot
+
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+## Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+bindsym $mod+u splith
+bindsym $mod+s splitv
+
+bindsym $mod+Shift+f fullscreen
+
+mode "resize" {
+    bindsym $left resize shrink width 25px
+    bindsym $down resize grow height 25px
+    bindsym $up resize shrink height 25px
+    bindsym $right resize grow width 25px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Mouse buttons
+
+bindsym --whole-window button8 workspace next_on_output
+bindsym --whole-window button9 workspace prev_on_output
+
+# Laptop buttons
+
+bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+
+# Looks
+
+smart_borders on
+smart_gaps on
+default_border pixel 2
+gaps outer 4
+gaps inner 4
+
+set $rose_rose #ebbcba
+set $rose_gold #f6c177
+set $rose_base #191724
+set $rose_text #e0def4
+set $rose_love #eb6f92
+set $rose_foam #9ccfd8
+
+client.focused          $rose_rose $rose_rose $rose_text $rose_gold $rose_rose
+client.focused_inactive $rose_base $rose_base $rose_text $rose_base $rose_base
+client.unfocused        $rose_base $rose_base $rose_text $rose_base $rose_base
+client.urgent           $rose_love $rose_love $rose_text $rose_love $rose_love
+
+# for_window [class=".*"] opacity 0.95
+
+bar {
+    position top
+
+    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+
+    font "RobotoMono Nerd Font Mono 13px"
+
+    height 24
+    workspace_min_width 24
+
+    colors {
+        statusline $rose_text 
+        background $rose_basef2
+        focused_workspace  $rose_foam $rose_base $rose_text
+        active_workspace  $rose_base $rose_base $rose_text
+        inactive_workspace $rose_base $rose_base $rose_text 
+    }
+}
+
+include ~/.config/sway/wallpaper
+
+
