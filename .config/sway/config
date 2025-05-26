@@ -8,7 +8,7 @@ set $up k
 set $right l
 
 # Apps
-set $term kitty
+set $term rio
 set $browser firefox
 set $launcher $HOME/.config/bemenu/drun.sh
 set $mail exec kitty aerc
@@ -80,7 +80,7 @@ bindsym $mod+Shift+0 move container to workspace number 10
 bindsym $mod+u splith
 bindsym $mod+s splitv
 
-bindsym $mod+Shift+f fullscreen
+bindsym $mod+f fullscreen
 
 mode "resize" {
     bindsym $left resize shrink width 25px
@@ -101,7 +101,6 @@ bindsym --whole-window button8 workspace next_on_output
 bindsym --whole-window button9 workspace prev_on_output
 
 # Laptop buttons
-
 bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
@@ -113,44 +112,34 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 # Looks
 
 smart_borders on
-smart_gaps on
+smart_gaps off
 default_border pixel 2
 gaps outer 4
 gaps inner 4
 
-set $rose_rose #ebbcba
-set $rose_gold #f6c177
-set $rose_base #191724
-set $rose_text #e0def4
-set $rose_love #eb6f92
-set $rose_foam #9ccfd8
-
-client.focused          $rose_rose $rose_rose $rose_text $rose_gold $rose_rose
-client.focused_inactive $rose_base $rose_base $rose_text $rose_base $rose_base
-client.unfocused        $rose_base $rose_base $rose_text $rose_base $rose_base
-client.urgent           $rose_love $rose_love $rose_text $rose_love $rose_love
-
 # for_window [class=".*"] opacity 0.95
+
+include ~/.config/sway/theme
+include ~/.config/sway/wallpaper
+
+client.focused          $active_border $active_bg $active_text $active_indicator 
+client.focused_inactive $inactive_border $inactive_bg $inactive_text $inactive_indicator
+client.unfocused        $unfocused_border $unfocused_bg $unfocused_text $unfocused_indicator
+client.urgent           $urgent_border $urgent_bg $urgent_text $urgent_indicator
 
 bar {
     position top
-
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
+    status_command while date +'%d.%m.%Y %M:%H'; do sleep 1; done
     font "RobotoMono Nerd Font Mono 13px"
-
     height 24
     workspace_min_width 24
-
     colors {
-        statusline $rose_text 
-        background $rose_basef2
-        focused_workspace  $rose_foam $rose_base $rose_text
-        active_workspace  $rose_base $rose_base $rose_text
-        inactive_workspace $rose_base $rose_base $rose_text 
+        statusline $bar_text
+        background $bar_bg
+        focused_workspace  $bar_focused_border $bar_focused_bg $bar_focused_text
+        active_workspace  $bar_active_border $bar_active_bg $bar_active_text
+        inactive_workspace $bar_inactive_border $bar_inactive_bg $bar_inactive_text
     }
 }
-
-include ~/.config/sway/wallpaper
 
 

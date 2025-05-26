@@ -1,5 +1,5 @@
 if status is-interactive
-    fish_config theme choose "Rosé Pine"
+    fish_config theme choose catppuccin-mocha
 
     set -g fish_greeting
 
@@ -12,6 +12,7 @@ if status is-interactive
 
     alias hx="helix"
     alias y="yazi"
+    alias note="y ~/notes"
 
     zoxide init fish | source
 
@@ -19,3 +20,10 @@ if status is-interactive
         sway
     end
 end
+
+# pnpm
+set -gx PNPM_HOME "/home/sten/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
