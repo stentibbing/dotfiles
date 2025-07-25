@@ -8,21 +8,21 @@ set $up k
 set $right l
 
 # Apps
-set $term rio
+set $term kitty
 set $browser firefox
 set $launcher $HOME/.config/bemenu/drun.sh
 set $mail exec kitty aerc
 
-set $laptop_screen 'eDP-1'
+set $internal_screen 'eDP-1'
 set $external_screen 'HDMI-A-1'
 
 # Displays
-output $laptop_screen pos 0 0 res 1920x1080 scale 1.5
+output $internal_screen pos 0 0 res 1920x1080 scale 1.5
 output $external_screen pos 1920 0 res 3840x2160 scale 2
 
 # Disable internal display on lid close
-bindswitch --locked lid:on output $laptop_screen disable
-bindswitch --locked lid:off output $laptop_screen enable
+bindswitch --locked lid:on output $internal_screen disable
+bindswitch --locked lid:off output $internal_screen enable
 
 # Keyboard
 input * {
@@ -35,11 +35,12 @@ bindsym $mod+b exec $browser
 bindsym $mod+Space exec $launcher
 bindsym $mod+m exec $mail
 
-bindsym $mod+Alt+r reload
+bindsym $mod+Shift+r reload
 bindsym $mod+q kill
 bindsym $mod+e exec swaymsg exit
-bindsym $mod+Shift+s exec shutdown -h now
-bindsym $mod+Shift+r exec reboot
+bindsym $mod+Alt+l exec swaylock -f
+bindsym $mod+Alt+s exec shutdown -h now
+bindsym $mod+Alt+r exec reboot
 
 # Move your focus around
 bindsym $mod+$left focus left
@@ -105,20 +106,17 @@ bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
 bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
-
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
-# Looks
-
+# looks
 smart_borders on
-smart_gaps off
+smart_gaps on
 default_border pixel 2
 gaps outer 4
 gaps inner 4
 
-# for_window [class=".*"] opacity 0.95
-
+# theme
 include ~/.config/sway/theme
 include ~/.config/sway/wallpaper
 
@@ -129,7 +127,7 @@ client.urgent           $urgent_border $urgent_bg $urgent_text $urgent_indicator
 
 bar {
     position top
-    status_command while date +'%d.%m.%Y %M:%H'; do sleep 1; done
+    status_command while date +'%d.%m.%Y %H:%M'; do sleep 1; done
     font "RobotoMono Nerd Font Mono 13px"
     height 24
     workspace_min_width 24
@@ -142,4 +140,9 @@ bar {
     }
 }
 
+# lock & sleep
+exec swayidle -w \
+	timeout 600 'swaylock -f' \
+	timeout 900 'swaymsg "output * power off"' \
+		resume 'swaymsg "output * power on"'
 
