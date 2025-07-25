@@ -1,0 +1,60 @@
+# catppuccin mocha palette
+set $text #cdd6f4
+set $text_pale #a6adc8
+set $base #1e1e2e
+set $base_transparent #1e1e2ef1
+set $muave #cba6f7
+set $peach #fab387
+set $red #f38ba8
+set $green #a6e3a1
+set $sapphire #74c7ec
+
+# status bar
+set $bar_text $text
+set $bar_bg $base_transparent
+
+# status bar focused workspace
+set $bar_focused_border $muave
+set $bar_focused_bg $muave
+set $bar_focused_text $base
+
+# status bar active workspace
+set $bar_active_border $base
+set $bar_active_bg $base
+set $bar_active_text $text
+
+# status bar inactive workspace
+set $bar_inactive_border $base
+set $bar_inactive_bg $base
+set $bar_inactive_text $text_pale
+
+# border
+set $active_border $green
+set $inactive_border $base
+set $unfocused_border $base
+set $urgent_border $red
+
+# background
+set $active_bg $green
+set $inactive_bg $base
+set $unfocused_bg $base
+set $urgent_bg $red
+
+# text
+set $active_text $text
+set $inactive_text $text_pale
+set $unfocused_text $text_pale
+set $urgent_text $text
+
+# indicator
+set $active_indicator $green
+set $inactive_indicator $base
+set $unfocused_indicator $base
+set $urgent_indicator $red
+
+# child_border
+set $active_child_border $green
+set $inactive_child_border $base
+set $unfocused_child_border $base
+set $urgent_child_border $red
+

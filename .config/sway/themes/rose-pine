@@ -1,0 +1,57 @@
+# rose-pine palette
+set $rose_rose #ebbcba
+set $rose_gold #f6c177
+set $rose_base #191724
+set $rose_text #e0def4
+set $rose_love #eb6f92
+set $rose_foam #9ccfd8
+
+# status bar
+set $bar_text $rose_text
+set $bar_bg $rose_base
+
+# status bar focused workspace
+set $bar_focused_border $rose_foam
+set $bar_focused_bg $rose_base
+set $bar_focused_text $rose_text
+
+# status bar active workspace
+set $bar_active_border $rose_base
+set $bar_active_bg $rose_base
+set $bar_active_text $rose_text
+
+# status bar inactive workspace
+set $bar_inactive_border $rose_base
+set $bar_inactive_bg $rose_base
+set $bar_inactive_text $rose_text
+
+# border
+set $active_border $rose_rose
+set $inactive_border $rose_base
+set $unfocused_border $rose_base
+set $urgent_border $rose_love
+
+# background
+set $active_bg $rose_rose
+set $inactive_bg $rose_base
+set $unfocused_bg $rose_base
+set $urgent_bg $rose_love
+
+# text
+set $active_text $rose_text
+set $inactive_text $rose_text
+set $unfocused_text $rose_text
+set $urgent_text $rose_text
+
+# indicator
+set $active_indicator $rose_gold
+set $inactive_indicator $rose_base
+set $unfocused_indicator $rose_base
+set $urgent_indicator $rose_love
+
+# child_border
+set $active_child_border $rose_rose
+set $inactive_child_border $rose_base
+set $unfocused_child_border $rose_base
+set $urgent_child_border $rose_love
+
