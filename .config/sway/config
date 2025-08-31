@@ -14,11 +14,18 @@ set $launcher $HOME/.config/bemenu/drun.sh
 set $mail exec kitty aerc
 
 set $internal_screen 'eDP-1'
-set $external_screen 'HDMI-A-1'
+set $usb-c-1 'DP-1'
+set $usb-c-2 'DP-2'
 
-# Displays
+# Displays @ home
 output $internal_screen pos 0 0 res 1920x1080 scale 1.5
-output $external_screen pos 1920 0 res 3840x2160 scale 2
+output $usb-c-1 pos 1920 0 res 3840x2160 scale 2
+output $usb-c-2 pos 1920 0 res 3840x2160 scale 2
+
+# Displays @ work
+# output 'DP-4' pos 0 0 res 2560x1440 scale 1.25
+# output 'DP-3' pos 2560 0 res 2560x1440 scale 1.25
+# output 'eDP-1' pos 5120 0 res 1920x1080 scale 1.5
 
 # Disable internal display on lid close
 bindswitch --locked lid:on output $internal_screen disable
@@ -114,7 +121,7 @@ smart_borders on
 smart_gaps on
 default_border pixel 2
 gaps outer 4
-gaps inner 4
+gaps inner 6
 
 # theme
 include ~/.config/sway/theme
@@ -128,7 +135,7 @@ client.urgent           $urgent_border $urgent_bg $urgent_text $urgent_indicator
 bar {
     position top
     status_command while date +'%d.%m.%Y %H:%M'; do sleep 1; done
-    font "RobotoMono Nerd Font Mono 13px"
+    font "UbuntuNerd Font 14px"
     height 24
     workspace_min_width 24
     colors {
@@ -144,5 +151,5 @@ bar {
 exec swayidle -w \
 	timeout 600 'swaylock -f' \
 	timeout 900 'swaymsg "output * power off"' \
-		resume 'swaymsg "output * power on"'
+	resume 'swaymsg "output * power on"'
 

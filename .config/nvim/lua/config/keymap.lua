@@ -10,6 +10,8 @@ map("n", "<C-f>", ":Oil<cr>", { noremap = true, silent = true })
 map("x", "<leader>y", '"+y', { noremap = true, silent = true })
 map("n", "<leader>p", '"+p', { noremap = true, silent = true })
 
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+
 -- Copilot
 vim.keymap.set("i", "<C-j>", 'copilot#Accept("\\<CR>")', {
 	expr = true,

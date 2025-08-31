@@ -1,9 +1,10 @@
 #!/bin/sh
 
-export rose_rose="#ebbcba"
-export rose_gold="#f6c177"
-export rose_base="#191724f2"
-export rose_text="#e0def4"
-export rose_love="#eb6f92"
-export rose_foam="#9ccfd8"
-export theme="--tf $rose_foam --tb $rose_base --ff $rose_text --fb $rose_base --cf $rose_base --sf $rose_love --sb $rose_base --hf $rose_gold --hb $rose_base --nf $rose_text --nb $rose_base --af $rose_rose --ab $rose_base"
+export TEXT="#e8e8d3"
+export BACKGROUND="#151515"
+export ARROW="#99ad6a"
+export SELECTED_TEXT="#e8e8d3"
+export SELECTED_BACKGROUND="#799d6a"
+export BORDER="#8fbfdc"
+
+export theme="--tf $ARROW --tb $BACKGROUND --ff $TEXT --fb $BACKGROUND --cf $BACKGROUND --sf $BACKGROUND --sb $BACKGROUND --hf $BACKGROUND --hb $SELECTED_BACKGROUND --nf $TEXT --nb $BACKGROUND --af $TEXT --ab $BACKGROUND --bdr $BORDER"

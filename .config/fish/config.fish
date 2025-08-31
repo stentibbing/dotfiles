@@ -7,16 +7,17 @@ set -Ux XDG_OPEN firefox
 set -Ux XDG_CONFIG_HOME "$HOME/.config"
 
 if status is-interactive
-    fish_config theme choose catppuccin-mocha
+    fish_config theme choose moonfly
 
     set -g fish_greeting
 
     alias vi="nvim"
+    alias y="yazi"
 
     zoxide init fish | source
 
     if test -z $DISPLAY; and test (tty) = /dev/tty1
-        sway
+       sway
     end
 end
 

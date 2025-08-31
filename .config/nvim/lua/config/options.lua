@@ -1,4 +1,4 @@
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("moonfly")
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
