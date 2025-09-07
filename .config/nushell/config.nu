@@ -1,0 +1,29 @@
+use std/util "path add"
+
+$env.config.buffer_editor = "nvim"
+$env.config.show_banner = false
+$env.config.table.mode = 'none'
+
+# paths
+path add "~/go/bin"
+path add "~/.local/share/pnpm"
+path add "~/.npm/global/bin"
+
+# aliases
+alias vi = nvim
+alias vim = nvim
+alias y = yazi
+
+# custom ll for detailed listing
+def ll [] {
+	ls -l | select name type user group mode size
+}
+
+# starfish
+mkdir ($nu.data-dir | path join "vendor/autoload")
+starship preset nerd-font-symbols -o ~/.config/nushell/starship.toml
+starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+
+# zoxide
+source ~/.zoxide.nu
+

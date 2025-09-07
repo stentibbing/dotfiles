@@ -1,0 +1,412 @@
+ll
+ls -la
+config nu
+z .config
+ll
+cd .config
+ls -la
+cd nushell
+ls -la
+vi config.nu
+ls -la
+ll
+ls -la
+ls
+cd .config
+ll
+ls -la
+ls
+cd fish
+ls
+vi config.fish
+nvim config.fish
+cd ..
+cd nushell/
+ll
+ls -la
+ls | filter
+ls | select name
+ls | select name, mode
+ls | select name mode
+ls | select [namer,mode]
+ls | select name
+ls | select name & mode
+ls | select name, mode
+ls | select name & select mode
+ls | select name mode
+ls | select name modified
+ls
+ls -la
+ls -la | select name user
+ls -la | select name user mode
+ls -la | select type name user mode
+ls -la | select name type user group mode size
+source config.nu
+source env.nu
+source config.nu
+ll
+ls -la | select name type user group mode size
+source config.nu
+ll
+ls -la
+source config.nu
+ll
+source config.nu
+ll
+source config.nu
+ll
+source config.nu
+ll
+ls | select name type user group mode size
+ls --all | select name type user group mode size
+ls --all
+ls -la
+ls --help
+ls -a
+ls -h
+ls -as
+ls -l
+source config.nu
+ll
+source config.nu
+ll
+ls -la
+ll
+bat history.txt
+source config.nu
+ll
+z projects
+ll
+cd last9.nvim/
+source config.nu
+z nushell
+ll
+source config.nu
+z projects
+ll
+cd last9.nvim/
+htop
+ll
+z nushell
+source config.nu
+ls -la
+ll
+z
+ll
+z Picture
+ll
+cd 
+ll
+z
+ll
+z Down
+ll
+sudo pacman -Ss chromium
+sudo pacman -S chromium
+chromium
+chromium --ozone-platform=wayland
+1
+chromium --ozone-platform=wayland
+which dbus
+vi
+vim
+vi
+ll
+ls -la
+cd $HOME
+ll
+ls -la
+lös
+ls
+cd HOME
+echo $HOME
+ll
+vi
+ll
+cd .config
+ls -la
+cd ..
+echo XDG_CONFIG
+sway
+i
+echo $XDG_CONFIFG
+echo $XDG_CONFIG
+z .config
+ll
+cd nushell/
+vi
+ls -la
+vi env.nu
+sour
+source config.nu
+vi
+ll
+vi
+nvim
+neovim
+nvim
+ll
+cd ..
+ll
+cd nvim
+ls -la
+cd lua ll
+ll
+cd lua
+ll
+cd plugins
+ll
+exit
+nvim
+cd .config
+vi
+ls -la
+üls -la
+ll
+lsl
+sudo pacman -Syu
+chromium --ozone-platform-hint=auto
+chromium
+sudo pacman -Ss zen
+sudo pacman -Ss zen-browser
+sudo pacman -Ss librewolf
+sudo pacman -Ss libre
+sudo pacman -Ss libre | select "*wolf"
+sudo pacman -Ss libre | grep wold
+sudo pacman -Ss libre | grep wolf
+sudo pacman -Ss libre | grep *wolf
+sudo pacman -Ss libre | grep *libre-
+sudo pacman -Ss libre | grep libre-
+git clone https://aur.archlinux.org/yay.git
+ll
+ls -la
+cd yay
+makepkg -si
+yay -Ss librewolf
+yay -S librewolf
+yay -S librewolf-bin
+z .nvim
+z nvim
+librewolf
+z .config
+ll
+cd sway
+vi
+sudo pacman -Rs chromium
+sudo pacman -Rs firefox
+ll
+z nushell
+ll
+vi
+$nu.config-path
+vi config.nu
+curl -sS https://starship.rs/install.sh | sh
+sudo curl -sS https://starship.rs/install.sh | sh
+source config.nu
+ls -la
+z nushell
+vi config.nu
+ll
+nushell --version
+version
+source config.nu
+yay -Ss starshop
+yay -Ss starship
+sudo yay -S starshopü
+sudo yay -S starship
+source config.nu
+ls -la
+ll
+z nushell
+ll
+z projects
+ll
+cd last9.nvim/
+git status
+sudo pacman -Ss firefox
+firefox
+sudo pacman -S firefodx
+sudo pacman -S firefox
+yay -Rs librewolf
+yay -Rs libre-wold
+yay -Rs libre-wolf
+yay -Ss librewolf
+yay -Ss aur/librewolf
+yay -Rs aur/librewolf
+pacman -Rs librewolf
+sudo pacman -Rs librewolf
+pacman -Qs libre
+yay -Rs librewolf-bin
+z sway
+ll
+vi config
+ll
+z nushell
+ls
+ls -la
+ls
+ll
+l
+z nushell
+source config.nu
+l
+rm -rf $HOME
+cd Downloads/
+ll
+l
+l
+source 
+source config.nu
+l
+ll
+cd ..
+ll
+l
+ll
+l
+cd nvim
+vi
+$env.config.color_config | sortõ
+$env.config.color_config | sort
+source config.nu
+z nushell
+source config.nu
+z last9
+z projects
+ll
+z last
+l
+ll
+l
+z kitty
+ll
+l
+vi kitty.conf
+fc-list | grep -i meslo
+vi
+fc-list | grep fira
+z last9
+kitty --version
+l
+l | select lua
+l | filter lua
+l | where name lua
+l | where name contains lua
+l | where name has lua
+cd ..
+ll
+l
+cd ops
+l
+cd ..
+l
+git clone git@github.com:Iron-Baltic/shopify-directo
+l
+cd shopify-directo/
+l
+sudo pacman -Ss ttf-hack
+sudo pacman -S ttf-hack
+sudo pacman -S ttf-hack-nerd
+fc-list
+fc-list | where has hack
+fc-list | grep hack
+fc-list | grep Hack
+z kitty
+ll
+l
+vi kitty.conf
+cd themes
+l
+cd ..
+l
+sudo pacman -Ss ttf-jetbrains
+sudo pacman -S ttf-jetbrains-mono-nerd
+fc-list | grep JetBrains
+l
+z last
+l
+vi
+z nushell
+ll
+cd ..
+cd nushell
+touch starship.toml
+z Downloads/
+ll
+lö
+l
+vi starry-sky-purple-sky-astronomical-stars-5k-3840x2160-1022.jpg
+ll
+l
+mv nerd-font-symbols.toml ../.config/nushell/starship.toml
+vi
+vi starship.toml
+vi
+source config.nu
+z last
+starship preset nerd-font-symbols -o ~/.config/starship.toml
+starship preset nerd-font-symbols -o ~/.config/nushell/starship.toml
+starship preset nerd-font-symbols -o ~/.config/nushell/starship.toml
+vi config.nu
+source config.nu
+ll
+z last
+l
+ls -la
+fasthfetch
+fastfetch
+z last
+z nushell
+ll
+l
+ll
+l
+rm -rf yay
+l
+cd projects
+l
+cd shopify-directo/
+cd ..
+cd last9.nvim/
+l
+echo $XDG_CONFIG
+vi starship.toml
+vi env.nu
+source env.nu
+echo $XDG_CONFIG
+vi env.nu
+ll
+vi env.nu
+vi
+source env.nu
+echo $XDG_CONFIG
+echo $env.XDG_CONFIG
+vi
+vi env.nu
+source env.nu
+vi
+z nushell
+source env.nu
+echo $env.EDITOR
+source env.nu
+vi
+source config.nu
+z
+ll
+ls -la
+cd .config
+yadm status
+yadm list
+yadm add nushell
+yadm status
+ls -la
+cat starship.toml
+rm -rf starship.toml
+ll
+l
+cd nushell
+vi
+oll
+source config.nu
+yadm status
+ls -la
