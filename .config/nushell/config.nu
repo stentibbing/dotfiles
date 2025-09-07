@@ -21,7 +21,7 @@ def ll [] {
 
 # starfish
 mkdir ($nu.data-dir | path join "vendor/autoload")
-starship preset nerd-font-symbols -o ~/.config/nushell/starship.toml
+starship preset nerd-font-symbols -o ($env.XDG_CONFIG_HOME | path join "nushell/starship.toml")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
 # zoxide

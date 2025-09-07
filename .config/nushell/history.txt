@@ -410,3 +410,101 @@ oll
 source config.nu
 yadm status
 ls -la
+yadm commit -a -m "nushell with starship"
+yadm push
+ll
+l
+cd ..
+l
+htop
+cd htop
+ll
+vi htoprc
+ll
+htop
+btop
+ll
+cd ..
+l
+ll
+cd btop
+l
+vi btop.conf
+l
+cd themes
+l
+cd ..
+l
+ll
+z last
+z nushell
+ll
+z last
+starship preset nerd-font-symbols -o ~/.config/nushell/starship.toml<\n>
+l
+ll
+source ~/.config/nushell/config.nu
+ll
+vi config.nu
+ll
+source env.nu
+z nushell
+source env.nu
+z last
+$env.XDG_CONFIG_HOME
+$env.XDG_OPEN
+ll
+vi
+ll
+bat starship.toml
+vi starship.toml
+cat starship.toml
+ll
+$nu.config-path
+$nu.config-dir
+$nu.default-config-dir
+source config.nu
+z last
+ll
+z last
+z nushell
+ll
+cat env.nu
+vi env.nu
+source env.nu
+z last
+ll
+starship preset nerd-font-symbols -o ($nu.default-config-dir | path join "starship.toml")
+z last
+z nushell
+ll
+vi config.nu
+starship preset nerd-font-symbols -o ./starship.toml
+z last
+z nushell
+ll
+cp starship.toml ../
+ll
+$env.XDG_CONFIG_HOME
+ll
+z nushell
+source env.nu
+ll
+z nushell
+vi config.nu
+ll
+$env.XDG_CONFIG_HOME
+z nushell
+vi env.nu
+exit
+$env.XDG_CONFIG_HOME
+z nushell
+vi env.nu
+exit
+$env.XDG_CONFIG_HOME
+z nushell
+vi config.nu
+exit
+z last
+ll
+yadm status
