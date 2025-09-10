@@ -1,3 +1,4 @@
+vim.opt.termguicolors = true
 vim.cmd.colorscheme("moonfly")
 
 vim.g.mapleader = " "

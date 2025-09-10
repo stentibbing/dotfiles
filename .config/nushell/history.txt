@@ -508,3 +508,120 @@ exit
 z last
 ll
 yadm status
+ll
+rm package*
+ll
+cd proje
+z projects
+ll
+mkdir stock
+cd stock
+z plannin
+ll
+cd cmd
+ll
+cd planning-directo/
+cd ..
+ll
+sudo pacman -S ttf-jetbrains-mono-nerd
+exit
+exit
+tmux
+exit
+ll
+z projects
+ll
+cd planning-directo/
+ll
+cd ..
+ll
+z config
+ll
+cd nushell
+ll
+vi starship.toml
+ll
+cd ..
+z projects
+ll
+cd planning-directo/
+ll
+ls -la
+lll
+ll
+cd ..
+ll
+cd stock
+ll
+mkdir api
+mkdir internal
+mkdir scripts
+mkdir cms
+mv cms cmd
+cd cmd
+ll
+mkdir stock
+cd stock
+touch stock.go
+cd ..
+ll
+cd ..
+ll
+touch README.md
+vi README.md
+vi
+ll
+ls -la
+exit
+exit
+tmux
+vi
+ll
+vi
+ll
+cd ..
+ll
+cd ..
+ll
+z
+ll
+ls -la
+ll
+ls -l
+ls -la
+vi .tmux.conf
+exit
+tmux
+tmux kill-server
+exit
+z projects
+ll
+cd planning-directo/
+vi
+ecxiyt
+exity
+exit
+tmux
+vi
+z projects
+ll
+cd planning
+cd planning-directo/
+vi
+ll
+z
+vi .tmux.conf
+echo $TERM
+echo $env.TERM
+vi
+ll
+z projects
+ll
+cd shopify-directo/
+ll
+vi
+ll
+z nvim
+ll
+vi
+yadm status
