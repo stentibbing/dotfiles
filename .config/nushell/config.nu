@@ -19,11 +19,21 @@ def l [] {
 	ls -la | select name type user group mode size
 }
 
-# starfish
+# notes
+def note [] {
+	vi ($env.HOME | path join "notes" (date now | format date "%m-%d-%Y.md")) 
+}
+
+# starship
 mkdir ($nu.data-dir | path join "vendor/autoload")
-starship preset nerd-font-symbols -o ($env.XDG_CONFIG_HOME | path join "nushell/starship.toml")
+starship preset nerd-font-symbols -o ($nu.default-config-dir | path join "starship.toml")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
 # zoxide
 source ~/.zoxide.nu
+
+# start sway if exists and if not yet running
+if (not (which sway | is-empty)) and (($env | get WAYLAND_DISPLAY | is-empty)) {
+    sway
+}
 
