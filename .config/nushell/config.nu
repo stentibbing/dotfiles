@@ -1,8 +1,8 @@
 use std/util "path add"
 
 $env.config.buffer_editor = "nvim"
+$env.config.table.mode = "none"
 $env.config.show_banner = false
-$env.config.table.mode = 'none'
 
 # paths
 path add "~/go/bin"
@@ -15,8 +15,8 @@ alias vim = nvim
 alias y = yazi
 
 # custom ll for detailed listing
-def ll [] {
-	ls -l | select name type user group mode size
+def l [] {
+	ls -la | select name type user group mode size
 }
 
 # starfish
