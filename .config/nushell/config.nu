@@ -33,7 +33,8 @@ starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.n
 source ~/.zoxide.nu
 
 # start sway if exists and if not yet running
-if (not (which sway | is-empty)) and (($env | get WAYLAND_DISPLAY | is-empty)) {
+if (not (which sway | is-empty)) and (($env | get -o WAYLAND_DISPLAY | is-empty)) {
     sway
 }
+
 
