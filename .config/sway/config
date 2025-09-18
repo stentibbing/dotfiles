@@ -10,7 +10,8 @@ set $right l
 # apps
 set $term kitty
 set $browser firefox
-set $launcher $HOME/.config/bemenu/drun.nu
+set $launcher $XDG_CONFIG_HOME/scripts/drun.nu
+set $power nu $XDG_CONFIG_HOME/scripts/power.nu
 set $mail exec kitty aerc
 
 set $internal_screen 'eDP-1'
@@ -18,14 +19,14 @@ set $usb-c-1 'DP-1'
 set $usb-c-2 'DP-2'
 
 # displays @ home
-output $internal_screen pos 0 0 res 1920x1080 scale 1.5
-output $usb-c-1 pos 1920 0 res 3840x2160 scale 2
-output $usb-c-2 pos 1920 0 res 3840x2160 scale 2
+# output $internal_screen pos 0 0 res 1920x1080 scale 1.5
+# output $usb-c-1 pos 1920 0 res 3840x2160 scale 2
+# output $usb-c-2 pos 1920 0 res 3840x2160 scale 2
 
 # displays @ work
-# output 'DP-4' pos 0 0 res 2560x1440 scale 1.25
-# output 'DP-3' pos 2560 0 res 2560x1440 scale 1.25
-# output 'eDP-1' pos 5120 0 res 1920x1080 scale 1.5
+output 'DP-4' pos 0 0 res 2560x1440 scale 1.25
+output 'DP-3' pos 2560 0 res 2560x1440 scale 1.25
+output 'eDP-1' pos 5120 0 res 1920x1080 scale 1.5
 
 # disable internal display on lid close
 bindswitch --locked lid:on output $internal_screen disable
@@ -40,14 +41,10 @@ input * {
 bindsym $mod+Return exec $term
 bindsym $mod+b exec $browser
 bindsym $mod+Space exec $launcher
-bindsym $mod+m exec $mail
+bindsym $mod+Shift+p exec $power
 
 bindsym $mod+Shift+r reload
 bindsym $mod+q kill
-bindsym $mod+e exec swaymsg exit
-bindsym $mod+Alt+l exec swaylock -f
-bindsym $mod+Alt+s exec shutdown -h now
-bindsym $mod+Alt+r exec reboot
 
 # move your focus around
 bindsym $mod+$left focus left
