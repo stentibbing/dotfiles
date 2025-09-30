@@ -6,6 +6,9 @@ return {
 			winopts = {
 				fullscreen = true,
 				border = "none",
+				preview = {
+					border = "none",
+				},
 			},
 		})
 	end,

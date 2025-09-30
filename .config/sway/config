@@ -1,3 +1,6 @@
+# sway config directory
+set $sway_config $XDG_CONFIG_HOME ~/.config/sway
+
 # mod key
 set $mod Mod4
 
@@ -26,7 +29,7 @@ set $usb-c-2 'DP-2'
 # displays @ work
 output 'DP-4' pos 0 0 res 2560x1440 scale 1.25
 output 'DP-3' pos 2560 0 res 2560x1440 scale 1.25
-output 'eDP-1' pos 5120 0 res 1920x1080 scale 1.5
+output 'eDP-1' pos 5120 0 res 1920x1080 scale 2
 
 # disable internal display on lid close
 bindswitch --locked lid:on output $internal_screen disable
@@ -43,7 +46,7 @@ bindsym $mod+b exec $browser
 bindsym $mod+Space exec $launcher
 bindsym $mod+Shift+p exec $power
 
-bindsym $mod+Shift+r reload
+bindsym $mod+Shift+r exec nu $XDG_CONFIG_HOME/sway/scripts/reload.nu
 bindsym $mod+q kill
 
 # move your focus around
@@ -84,7 +87,6 @@ bindsym $mod+Shift+0 move container to workspace number 10
 
 bindsym $mod+u splith
 bindsym $mod+s splitv
-
 bindsym $mod+f fullscreen
 
 mode "resize" {
