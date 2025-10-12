@@ -1,6 +1,3 @@
-# sway config directory
-set $scripts "$XDG_CONFIG_HOME/sway/scripts"
-
 # mod key
 set $mod Mod4
 
