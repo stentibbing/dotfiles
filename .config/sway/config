@@ -1,5 +1,5 @@
 # sway config directory
-set $sway_config $XDG_CONFIG_HOME ~/.config/sway
+set $scripts "$XDG_CONFIG_HOME/sway/scripts"
 
 # mod key
 set $mod Mod4
@@ -13,23 +13,24 @@ set $right l
 # apps
 set $term kitty
 set $browser firefox
-set $launcher $XDG_CONFIG_HOME/scripts/drun.nu
-set $power nu $XDG_CONFIG_HOME/scripts/power.nu
-set $mail exec kitty aerc
+set $launcher exec "$scripts/drun.nu"
+set $power exec "$scripts/power.nu"
 
+# set $power exec nu $sway_config/scripts/power_menu.nu 
+set $mail exec kitty aerc
 set $internal_screen 'eDP-1'
 set $usb-c-1 'DP-1'
 set $usb-c-2 'DP-2'
 
 # displays @ home
-# output $internal_screen pos 0 0 res 1920x1080 scale 1.5
-# output $usb-c-1 pos 1920 0 res 3840x2160 scale 2
-# output $usb-c-2 pos 1920 0 res 3840x2160 scale 2
+output $internal_screen pos 0 0 res 1920x1080 scale 1.5
+output $usb-c-1 pos 1920 0 res 3840x2160 scale 2
+output $usb-c-2 pos 1920 0 res 3840x2160 scale 2
 
 # displays @ work
-output 'DP-4' pos 0 0 res 2560x1440 scale 1.25
-output 'DP-3' pos 2560 0 res 2560x1440 scale 1.25
-output 'eDP-1' pos 5120 0 res 1920x1080 scale 2
+# output 'DP-4' pos 0 0 res 2560x1440 scale 1.25
+# output 'DP-3' pos 2560 0 res 2560x1440 scale 1.25
+# output 'eDP-1' pos 5120 0 res 1920x1080 scale 2
 
 # disable internal display on lid close
 bindswitch --locked lid:on output $internal_screen disable
@@ -43,7 +44,7 @@ input * {
 # bindings
 bindsym $mod+Return exec $term
 bindsym $mod+b exec $browser
-bindsym $mod+Space exec $launcher
+bindsym $mod+Space exec $launcher  
 bindsym $mod+Shift+p exec $power
 
 bindsym $mod+Shift+r exec nu $XDG_CONFIG_HOME/sway/scripts/reload.nu
@@ -151,3 +152,5 @@ exec swayidle -w \
 	timeout 900 'swaymsg "output * power off"' \
 	resume 'swaymsg "output * power on"'
 
+# notifications
+exec dunst
