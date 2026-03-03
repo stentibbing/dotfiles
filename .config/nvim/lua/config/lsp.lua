@@ -8,16 +8,20 @@ vim.lsp.enable({
 })
 
 vim.diagnostic.config({
-	virtual_lines = {
-		current_line = true,
-	},
-	virtual_text = true,
+	virtual_lines = false,
 	underline = true,
 	update_in_insert = false,
 	severity_sort = true,
 	float = {
 		border = "rounded",
-		source = true,
+		source = false,
+		wrap = true,
+		max_width = 80,
+		header = "",
+		prefix = function(diagnostic, i, total)
+			return "● ", "ERROR"
+		end,
+		suffix = "",
 	},
 	signs = {
 		text = {

@@ -5,3 +5,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+vim.api.nvim_create_autocmd("CursorHold", {
+	desc = "Show diagnostics in floating window on hover",
+	group = vim.api.nvim_create_augroup("diagnostic-float", { clear = true }),
+	callback = function()
+		vim.diagnostic.open_float(nil, { focus = false })
+	end,
+})

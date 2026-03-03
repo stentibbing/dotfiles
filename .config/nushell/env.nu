@@ -1,3 +1,4 @@
+$env.LANG = "en_US.UTF-8"
 $env.EDITOR = "nvim"
 $env.VISUAL = "nvim"
 $env.XDG_OPEN = "firefox"

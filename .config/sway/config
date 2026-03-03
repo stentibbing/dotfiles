@@ -1,33 +1,19 @@
-# mod key
-set $mod Mod4
-
-# arrow keys
-set $left h
-set $down j
-set $up k
-set $right l
-
-# apps
-set $term kitty
-set $browser firefox
-set $launcher exec "$scripts/drun.nu"
-set $power exec "$scripts/power.nu"
-
 # set $power exec nu $sway_config/scripts/power_menu.nu 
-set $mail exec kitty aerc
 set $internal_screen 'eDP-1'
 set $usb-c-1 'DP-1'
 set $usb-c-2 'DP-2'
 
+# monitors
+include ~/.config/sway/monitors
+
 # displays @ home
-output $internal_screen pos 0 0 res 1920x1080 scale 1.5
-output $usb-c-1 pos 1920 0 res 3840x2160 scale 2
-output $usb-c-2 pos 1920 0 res 3840x2160 scale 2
+# output 'AU Optronics 0x243D Unknown' pos 0 0 res 1920x1080 scale 1.5
+# output 'LG Electronics LG HDR 4K 0x0004AD6B' pos 1920 0 res 3840x2160 scale 2
 
 # displays @ work
-# output 'DP-4' pos 0 0 res 2560x1440 scale 1.25
-# output 'DP-3' pos 2560 0 res 2560x1440 scale 1.25
-# output 'eDP-1' pos 5120 0 res 1920x1080 scale 2
+output 'AU Optronics 0x243D Unknown' pos 5120 0 res 1920x1080 scale 1.5
+output 'Dell Inc. DELL P3223DE HZYTL04' pos 0 0 res 2560x1440 scale 1.25
+output 'Dell Inc. DELL P3223DE HW31M04' pos 2560 0 res 2560x1440 scale 1.25
 
 # disable internal display on lid close
 bindswitch --locked lid:on output $internal_screen disable
@@ -38,13 +24,30 @@ input * {
     xkb_layout "ee"
 }
 
+# touchpad
+input type:touchpad {
+		tap enabled
+		natural_scroll enabled
+		dwt enabled
+}
+
+# mod key
+set $mod Mod4
+
+# arrow keys
+set $left h
+set $down j
+set $up k
+set $right l
+
 # bindings
-bindsym $mod+Return exec $term
-bindsym $mod+b exec $browser
+bindsym $mod+Return exec alacritty
+bindsym $mod+b exec firefox
+bindsym $mod+Shift+b exec firefox --private-window
 bindsym $mod+Space exec $launcher  
 bindsym $mod+Shift+p exec $power
 
-bindsym $mod+Shift+r exec nu $XDG_CONFIG_HOME/sway/scripts/reload.nu
+bindsym $mod+Shift+r exec ~/.config/sway/scripts/reload.sh
 bindsym $mod+q kill
 
 # move your focus around
@@ -86,6 +89,7 @@ bindsym $mod+Shift+0 move container to workspace number 10
 bindsym $mod+u splith
 bindsym $mod+s splitv
 bindsym $mod+f fullscreen
+bindsym $mod+r mode "resize"
 
 mode "resize" {
     bindsym $left resize shrink width 25px
@@ -97,8 +101,6 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
-bindsym $mod+r mode "resize"
 
 # mouse buttons
 bindsym --whole-window button8 workspace next_on_output
@@ -113,33 +115,40 @@ bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 # looks
-smart_borders on
-smart_gaps on
 default_border pixel 2
 gaps outer 4
 gaps inner 6
+smart_gaps on
+smart_borders on
 
 # theme
 include ~/.config/sway/theme
 include ~/.config/sway/wallpaper
 
-client.focused          $active_border $active_bg $active_text $active_indicator 
-client.focused_inactive $inactive_border $inactive_bg $inactive_text $inactive_indicator
-client.unfocused        $unfocused_border $unfocused_bg $unfocused_text $unfocused_indicator
-client.urgent           $urgent_border $urgent_bg $urgent_text $urgent_indicator
+client.focused          $bar_focused_border $bar_focused_bg $bar_focused_fg $focused_indicator $focused_child_border
+client.focused_inactive $bar_unfocused_border $bar_unfocused_bg $bar_unfocused_fg $unfocused_indicator $unfocused_child_border
+client.unfocused        $bar_unfocused_border $bar_unfocused_bg $bar_unfocused_fg $unfocused_indicator $unfocused_child_border
+client.urgent           $bar_urgent_border $bar_urgent_bg $bar_urgent_fg $urgent_indicator $urgent_child_border
 
 bar {
     position top
-    status_command while date +'%d.%m.%Y %H:%M'; do sleep 1; done
-    font "UbuntuNerd Font 14px"
-    height 24
-    workspace_min_width 24
+    height 32
+    workspace_min_width 32
+    font "UbuntuNerd Font 13px"
+    status_command ~/projects/swaystats/tmp/swaystats
+		status_edge_padding 10
     colors {
-        statusline $bar_text
-        background $bar_bg
-        focused_workspace  $bar_focused_border $bar_focused_bg $bar_focused_text
-        active_workspace  $bar_active_border $bar_active_bg $bar_active_text
-        inactive_workspace $bar_inactive_border $bar_inactive_bg $bar_inactive_text
+			background $bar_bg
+			statusline $bar_fg
+			separator $bar_separator
+			focused_background $bar_focused_bg
+			focused_statusline $bar_focused_fg
+			focused_separator $bar_focused_separator
+			focused_workspace  $focused_workspace_border $focused_workspace_bg $focused_workspace_fg
+			active_workspace  $active_workspace_border $active_workspace_bg $active_workspace_fg
+			inactive_workspace $inactive_workspace_border $inactive_workspace_bg $inactive_workspace_fg
+			urgent_workspace $urgent_workspace_border $urgent_workspace_bg $urgent_workspace_fg
+			binding_mode $bar_binding_mode_border $bar_binding_mode_bg $bar_binding_mode_fg
     }
 }
 

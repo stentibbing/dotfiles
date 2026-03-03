@@ -8,26 +8,12 @@ return {
 		require("codecompanion").setup({
 			strategies = {
 				chat = {
-					adapter = "copilot",
-				},
-				inline = {
-					adapter = "copilot",
-				},
-				agent = {
-					adapter = "copilot",
+					adapter = {
+						name = "copilot",
+						model = "claude-sonnet-4.5",
+					},
 				},
 			},
 		})
 	end,
-	opts = {
-		strategies = {
-			chat = {
-				adapter = "copilot",
-			},
-		},
-		opts = {
-			-- Set debug logging
-			log_level = "DEBUG",
-		},
-	},
 }

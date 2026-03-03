@@ -10,6 +10,7 @@ return {
 				typescript = { "prettierd" },
 				svelte = { "prettierd" },
 				css = { "prettierd" },
+				html = { "prettierd" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
