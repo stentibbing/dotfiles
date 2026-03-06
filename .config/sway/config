@@ -7,13 +7,13 @@ set $usb-c-2 'DP-2'
 include ~/.config/sway/monitors
 
 # displays @ home
-# output 'AU Optronics 0x243D Unknown' pos 0 0 res 1920x1080 scale 1.5
-# output 'LG Electronics LG HDR 4K 0x0004AD6B' pos 1920 0 res 3840x2160 scale 2
+output 'AU Optronics 0x243D Unknown' pos 0 0 res 1920x1080 scale 1.5
+output 'LG Electronics LG HDR 4K 0x0004AD6B' pos 1920 0 res 3840x2160 scale 2
 
 # displays @ work
-output 'AU Optronics 0x243D Unknown' pos 5120 0 res 1920x1080 scale 1.5
-output 'Dell Inc. DELL P3223DE HZYTL04' pos 0 0 res 2560x1440 scale 1.25
-output 'Dell Inc. DELL P3223DE HW31M04' pos 2560 0 res 2560x1440 scale 1.25
+# output 'AU Optronics 0x243D Unknown' pos 5120 0 res 1920x1080 scale 1.5
+# output 'Dell Inc. DELL P3223DE HZYTL04' pos 0 0 res 2560x1440 scale 1.25
+# output 'Dell Inc. DELL P3223DE HW31M04' pos 2560 0 res 2560x1440 scale 1.25
 
 # disable internal display on lid close
 bindswitch --locked lid:on output $internal_screen disable
@@ -136,7 +136,8 @@ bar {
     workspace_min_width 32
     font "UbuntuNerd Font 13px"
     status_command ~/projects/swaystats/tmp/swaystats
-		status_edge_padding 10
+	status_edge_padding 10
+	separator_symbol ""
     colors {
 			background $bar_bg
 			statusline $bar_fg
@@ -154,9 +155,9 @@ bar {
 
 # lock & sleep
 exec swayidle -w \
-	timeout 600 'swaylock -f' \
-	timeout 900 'swaymsg "output * power off"' \
-	resume 'swaymsg "output * power on"'
+timeout 600 'swaylock -f' \
+timeout 900 'swaymsg "output * power off"' \
+resume 'swaymsg "output * power on"'
 
 # notifications
 exec dunst
