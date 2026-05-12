@@ -16,13 +16,11 @@ vim.pack.add({
 	"https://github.com/windwp/nvim-autopairs",
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/ibhagwan/fzf-lua",
-	"https://github.com/github/copilot.vim",
-	"https://github.com/olimorris/codecompanion.nvim",
+	"https://github.com/coder/claudecode.nvim",
 	"https://github.com/tpope/vim-sleuth",
 	"https://github.com/folke/flash.nvim",
 	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/nvim-lualine/lualine.nvim",
-	"https://github.com/srcery-colors/srcery-vim"
 })
 
 require("nvim-treesitter").setup({
@@ -50,7 +48,7 @@ require("blink.cmp").setup({
 		default = { "lsp", "path", "snippets", "buffer" },
 	},
 	fuzzy = {
-		implementation = "prefer_rust_with_warning"
+		implementation = "prefer_rust_with_warning",
 	},
 })
 
@@ -94,78 +92,69 @@ require("fzf-lua").setup({
 	},
 })
 
-require("codecompanion").setup({
-	strategies = {
-		chat = {
-			adapter = {
-				name = "copilot",
-				model = "claude-sonnet-4.5",
+require("claudecode").setup()
+
+require("lualine").setup({
+	options = {
+		icons_enabled = true,
+		theme = "auto",
+		component_separators = { left = " ", right = " " },
+		section_separators = { left = " ", right = " " },
+		disabled_filetypes = {
+			statusline = {},
+			winbar = {},
+		},
+		ignore_focus = {},
+		always_divide_middle = true,
+		always_show_tabline = true,
+		globalstatus = false,
+		refresh = {
+			statusline = 1000,
+			tabline = 1000,
+			winbar = 1000,
+			refresh_time = 16, -- ~60fps
+			events = {
+				"WinEnter",
+				"BufEnter",
+				"BufWritePost",
+				"SessionLoadPost",
+				"FileChangedShellPost",
+				"VimResized",
+				"Filetype",
+				"CursorMoved",
+				"CursorMovedI",
+				"ModeChanged",
 			},
 		},
 	},
+	sections = {
+		lualine_a = { "mode" },
+		lualine_b = { "branch", "diff", "diagnostics" },
+		lualine_c = { "filename" },
+		lualine_x = { "encoding", "fileformat", "filetype" },
+		lualine_y = { "progress" },
+		lualine_z = { "location" },
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = { "filename" },
+		lualine_x = { "location" },
+		lualine_y = {},
+		lualine_z = {},
+	},
+	tabline = {},
+	winbar = {},
+	inactive_winbar = {},
+	extensions = {},
 })
-
-require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    theme = 'auto',
-    component_separators = { left = ' ', right = ' '},
-    section_separators = { left = ' ', right = ' '},
-    disabled_filetypes = {
-      statusline = {},
-      winbar = {},
-    },
-    ignore_focus = {},
-    always_divide_middle = true,
-    always_show_tabline = true,
-    globalstatus = false,
-    refresh = {
-      statusline = 1000,
-      tabline = 1000,
-      winbar = 1000,
-      refresh_time = 16, -- ~60fps
-      events = {
-        'WinEnter',
-        'BufEnter',
-        'BufWritePost',
-        'SessionLoadPost',
-        'FileChangedShellPost',
-        'VimResized',
-        'Filetype',
-        'CursorMoved',
-        'CursorMovedI',
-        'ModeChanged',
-      },
-    }
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  winbar = {},
-  inactive_winbar = {},
-  extensions = {}
-}
 
 require("flash").setup({
 	modes = {
 		char = {
 			jump_labels = true,
-		}
-	}
+		},
+	},
 })
 
 --- LSP ---
@@ -251,16 +240,26 @@ map("n", "<leader>fg", require("fzf-lua").live_grep, { desc = "FzfLua live grep"
 map("n", "<leader>fd", require("fzf-lua").diagnostics_document, { desc = "FzfLua diagnostics" })
 map("x", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
 map("n", "<leader>p", '"+p', { desc = "Paste from system clipboard" })
-map("n", "<leader>c", require("codecompanion").toggle, { desc = "Toggle CodeCompanion" })
 map("n", "<leader>t", vim.cmd.ToggleTerm, { desc = "Toggle terminal" })
 map("t", "<leader>tt", "<C-\\><C-n>:ToggleTerm<cr>", { desc = "Exit terminal mode and toggle terminal" })
 map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 map("n", "<C-f>", require("oil").open, { desc = "Open Oil file browser" })
-map("i", "<C-j>", 'copilot#Accept("\\<CR>")', {
-	expr = true,
-	replace_keycodes = false,
-	desc = "Accept Copilot suggestion",
+map("n", "<leader>ac", "<cmd>ClaudeCode<cr>", { desc = "Toggle Claude" })
+map("n", "<leader>af", "<cmd>ClaudeCodeFocus<cr>", { desc = "Focus Claude" })
+map("n", "<leader>ar", "<cmd>ClaudeCode --resume<cr>", { desc = "Resume Claude" })
+map("n", "<leader>aC", "<cmd>ClaudeCode --continue<cr>", { desc = "Continue Claude" })
+map("n", "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", { desc = "Select Claude model" })
+map("n", "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", { desc = "Add current buffer" })
+map("v", "<leader>as", "<cmd>ClaudeCodeSend<cr>", { desc = "Send to Claude" })
+map("n", "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", { desc = "Accept diff" })
+map("n", "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", { desc = "Deny diff" })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
+	callback = function()
+		map("n", "<leader>as", "<cmd>ClaudeCodeTreeAdd<cr>", { desc = "Add file", buffer = true })
+	end,
 })
 
 --- Autocommands ---
