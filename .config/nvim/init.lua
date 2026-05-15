@@ -21,6 +21,7 @@ vim.pack.add({
 	"https://github.com/folke/flash.nvim",
 	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/nvim-lualine/lualine.nvim",
+	"https://github.com/srcery-colors/srcery-vim",
 })
 
 require("nvim-treesitter").setup({

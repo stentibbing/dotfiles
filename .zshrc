@@ -22,7 +22,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 alias l='ls -lah --color=auto'
 alias y='yazi'
 alias vi='nvim'
-alias ai='copilot'
+alias ai='claude'
+alias bat='batcat'
 
 autoload -Uz compinit
 compinit
@@ -39,3 +40,8 @@ eval "$(starship init zsh)"
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+	tmux attach || tmux new-session
+fi
+
