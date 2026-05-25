@@ -31,14 +31,15 @@ compinit
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/
 source /usr/share/zsh/plugins/zsh-autosuggestions/
 
+
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# launch tmux at startup
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+# 	tmux attach || tmux new-session
+# fi
 
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-	tmux attach || tmux new-session
-fi
-
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

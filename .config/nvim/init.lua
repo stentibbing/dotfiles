@@ -1,6 +1,7 @@
 --- Plugins ---
 vim.pack.add({
 	"https://github.com/nvim-lua/plenary.nvim",
+	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/rafamadriz/friendly-snippets",
@@ -11,7 +12,6 @@ vim.pack.add({
 	"https://github.com/coder/claudecode.nvim",
 	"https://github.com/tpope/vim-sleuth",
 	"https://github.com/folke/flash.nvim",
-	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/nvim-lualine/lualine.nvim",
 	"https://github.com/catppuccin/nvim",
 })
@@ -208,6 +208,7 @@ vim.opt.scrolloff = 10
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.updatetime = 500
+vim.opt.autoread = true
 vim.o.winborder = "rounded"
 
 --- Keymaps ---
@@ -234,6 +235,13 @@ map("v", "<leader>as", "<cmd>ClaudeCodeSend<cr>", { desc = "Send to Claude" })
 map("n", "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", { desc = "Accept diff" })
 map("n", "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", { desc = "Deny diff" })
 
+--- Filetype detection ---
+vim.filetype.add({
+	extension = {
+		gotmpl = "gotmpl",
+	},
+})
+
 --- Autocommands ---
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
@@ -242,11 +250,22 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank()
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+	desc = "Reload buffer if file changed on disk",
+	group = vim.api.nvim_create_augroup("auto-reload", { clear = true }),
+	callback = function()
+		if vim.fn.mode() ~= "c" then
+			vim.cmd("checktime")
+		end
 	end,
 })
 
