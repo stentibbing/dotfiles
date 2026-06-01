@@ -4,14 +4,6 @@ vim.pack.add({
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/rafamadriz/friendly-snippets",
-	{
-		src = "https://github.com/saghen/blink.cmp",
-		version = vim.version.range("^1"),
-		-- Specify how to build the plugin depts to use faster rust binary
-		checkout = function(plugin)
-			vim.system({ "cargo", "build", "--release" }, { cwd = plugin.dir }):wait()
-		end,
-	},
 	"https://github.com/stevearc/conform.nvim",
 	"https://github.com/windwp/nvim-autopairs",
 	"https://github.com/stevearc/oil.nvim",
@@ -21,7 +13,7 @@ vim.pack.add({
 	"https://github.com/folke/flash.nvim",
 	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/nvim-lualine/lualine.nvim",
-	"https://github.com/srcery-colors/srcery-vim",
+	"https://github.com/catppuccin/nvim",
 })
 
 require("nvim-treesitter").setup({
@@ -35,21 +27,16 @@ require("nvim-treesitter").setup({
 		"markdown",
 		"markdown_inline",
 		"yaml",
-	},
-})
-
-require("blink.cmp").setup({
-	appearance = {
-		use_nvim_cmp_as_default = true,
-	},
-	completion = {
-		documentation = { auto_show = false },
-	},
-	sources = {
-		default = { "lsp", "path", "snippets", "buffer" },
-	},
-	fuzzy = {
-		implementation = "prefer_rust_with_warning",
+		"go",
+		"gomod",
+		"gosum",
+		"typescript",
+		"javascript",
+		"tsx",
+		"svelte",
+		"css",
+		"html",
+		"json",
 	},
 })
 
@@ -136,18 +123,6 @@ require("lualine").setup({
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
 	},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = { "location" },
-		lualine_y = {},
-		lualine_z = {},
-	},
-	tabline = {},
-	winbar = {},
-	inactive_winbar = {},
-	extensions = {},
 })
 
 require("flash").setup({
@@ -212,11 +187,15 @@ vim.diagnostic.config({
 })
 
 --- Options ---
-vim.cmd.colorscheme("srcery")
-vim.opt.background = "dark"
+vim.cmd.colorscheme("catppuccin-mocha")
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
+
+vim.opt.completeopt = { "menuone", "popup", "fuzzy", "noselect" }
+vim.opt.background = "dark"
+vim.opt.autoread = true
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -230,7 +209,6 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.updatetime = 500
 vim.o.winborder = "rounded"
-vim.g.copilot_no_tab_map = true
 
 --- Keymaps ---
 local map = vim.keymap.set
@@ -256,6 +234,7 @@ map("v", "<leader>as", "<cmd>ClaudeCodeSend<cr>", { desc = "Send to Claude" })
 map("n", "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", { desc = "Accept diff" })
 map("n", "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", { desc = "Deny diff" })
 
+--- Autocommands ---
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
 	callback = function()
@@ -263,7 +242,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
---- Autocommands ---
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
@@ -277,5 +255,43 @@ vim.api.nvim_create_autocmd("CursorHold", {
 	group = vim.api.nvim_create_augroup("diagnostic-float", { clear = true }),
 	callback = function()
 		vim.diagnostic.open_float(nil, { focus = false })
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, { command = "checktime" })
+
+vim.api.nvim_create_autocmd("InsertCharPre", {
+	callback = function()
+		if vim.fn.pumvisible() == 1 or vim.fn.state("m") == "m" then
+			return
+		end
+
+		local clients = vim.lsp.get_clients({ bufnr = 0 })
+
+		if next(clients) ~= nil then
+			vim.lsp.completion.get()
+		else
+			local key = vim.keycode("<C-x><C-n>")
+			vim.api.nvim_feedkeys(key, "m", false)
+		end
+	end,
+})
+
+vim.keymap.set("i", "<tab>", function()
+	local key = vim.keycode("<tab>")
+	if vim.fn.pumvisible() == 1 then
+		key = vim.keycode("<C-n>")
+	end
+	vim.api.nvim_feedkeys(key, "n", false)
+end, {})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		vim.lsp.completion.enable(true, args.data.client_id, args.buf, {
+			autotrigger = false,
+			convert = function(item)
+				return { abbr = item.label }
+			end,
+		})
 	end,
 })

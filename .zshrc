@@ -13,7 +13,7 @@ bindkey '^A' autosuggest-accept
 export EDITOR="nvim"
 export VISUAL="nvim"
 export MANPAGER="nvim +Man!"
-export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/config.toml"
+export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
@@ -23,16 +23,13 @@ alias l='ls -lah --color=auto'
 alias y='yazi'
 alias vi='nvim'
 alias ai='claude'
-alias bat='batcat'
 
 autoload -Uz compinit
 compinit
 
-# syntax highlighting
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# autosuggestions
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#plugins
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/
+source /usr/share/zsh/plugins/zsh-autosuggestions/
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
