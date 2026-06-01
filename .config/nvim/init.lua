@@ -81,6 +81,7 @@ require("fzf-lua").setup({
 })
 
 require("claudecode").setup()
+<<<<<<< HEAD
 
 require("lualine").setup({
 	options = {
@@ -125,6 +126,9 @@ require("lualine").setup({
 	},
 })
 
+=======
+require("lualine").setup()
+>>>>>>> ca7a338 (various changes)
 require("flash").setup({
 	modes = {
 		char = {
@@ -243,6 +247,10 @@ vim.filetype.add({
 })
 
 --- Autocommands ---
+<<<<<<< HEAD
+=======
+--- Add buffer as context to Claude AI ---
+>>>>>>> ca7a338 (various changes)
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
 	callback = function()
@@ -250,7 +258,11 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+<<<<<<< HEAD
 
+=======
+-- Highlight the text while yankin
+>>>>>>> ca7a338 (various changes)
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
@@ -259,6 +271,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+--- Reload buffer if changes made to file
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
 	desc = "Reload buffer if file changed on disk",
 	group = vim.api.nvim_create_augroup("auto-reload", { clear = true }),
@@ -269,6 +282,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHo
 	end,
 })
 
+-- Show diagnostics on hover
 vim.api.nvim_create_autocmd("CursorHold", {
 	desc = "Show diagnostics in floating window on hover",
 	group = vim.api.nvim_create_augroup("diagnostic-float", { clear = true }),
