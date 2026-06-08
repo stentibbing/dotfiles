@@ -9,7 +9,6 @@ vim.pack.add({
 	"https://github.com/windwp/nvim-autopairs",
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/ibhagwan/fzf-lua",
-	"https://github.com/coder/claudecode.nvim",
 	"https://github.com/tpope/vim-sleuth",
 	"https://github.com/folke/flash.nvim",
 	"https://github.com/nvim-lualine/lualine.nvim",
@@ -80,9 +79,6 @@ require("fzf-lua").setup({
 	},
 })
 
-require("claudecode").setup()
-<<<<<<< HEAD
-
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -126,14 +122,18 @@ require("lualine").setup({
 	},
 })
 
-=======
 require("lualine").setup()
->>>>>>> ca7a338 (various changes)
 require("flash").setup({
 	modes = {
 		char = {
 			jump_labels = true,
 		},
+	},
+})
+
+require("catppuccin").setup({
+	integrations = {
+		treesitter = true,
 	},
 })
 
@@ -247,22 +247,7 @@ vim.filetype.add({
 })
 
 --- Autocommands ---
-<<<<<<< HEAD
-=======
---- Add buffer as context to Claude AI ---
->>>>>>> ca7a338 (various changes)
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
-	callback = function()
-		map("n", "<leader>as", "<cmd>ClaudeCodeTreeAdd<cr>", { desc = "Add file", buffer = true })
-	end,
-})
-
-<<<<<<< HEAD
-
-=======
 -- Highlight the text while yankin
->>>>>>> ca7a338 (various changes)
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
@@ -292,6 +277,13 @@ vim.api.nvim_create_autocmd("CursorHold", {
 })
 
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, { command = "checktime" })
+
+vim.api.nvim_create_autocmd("FileType", {
+	desc = "Enable treesitter highlighting for filetypes with an installed parser",
+	callback = function(args)
+		pcall(vim.treesitter.start, args.buf)
+	end,
+})
 
 vim.api.nvim_create_autocmd("InsertCharPre", {
 	callback = function()
