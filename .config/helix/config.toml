@@ -1,0 +1,13 @@
+theme = "catppuccin_mocha"
+
+[editor]
+true-color = true
+line-number = "relative"
+cursorline = true
+mouse = false
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+other-lines = "error"
+
+
