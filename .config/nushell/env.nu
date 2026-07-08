@@ -21,5 +21,4 @@ path add ($env.FNM_MULTISHELL_PATH | path join "bin")
 # Add env vars
 $env.EDITOR = "helix"
 
-
 zoxide init nushell | save -f ~/.zoxide.nu

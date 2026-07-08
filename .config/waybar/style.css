@@ -1,0 +1,34 @@
+* {
+  font-family: "UbuntuMono Nerd Font", sans-serif, Arial;
+  font-size: 15px;
+  color: #ffffff;
+}
+
+window#waybar {
+  background: none;
+}
+
+window#waybar > box {
+  background: #1e1e2e;
+}
+
+button {
+  border: none;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#network,
+#pulseaudio,
+#wireplumber,
+#mode,
+#idle_inhibitor,
+#power-profiles-daemon,
+#window,
+#workspaces {
+  margin: 0 10px;
+}
