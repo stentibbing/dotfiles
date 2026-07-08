@@ -1,0 +1,144 @@
+# Srcery theme for Helix
+# Generated from srcery-palette (palette.json) — only colors defined there are used.
+# https://github.com/srcery-colors/srcery-palette
+
+# Editor UI
+"ui.background" = { fg = "white", bg = "black" }
+"ui.background.separator" = { fg = "gray4" }
+"ui.text" = { fg = "white" }
+"ui.text.focus" = { fg = "bright_white", modifiers = ["bold"] }
+"ui.text.inactive" = { fg = "bright_black" }
+
+"ui.cursor" = { modifiers = ["reversed"] }
+"ui.cursor.primary" = { modifiers = ["reversed"] }
+"ui.cursor.match" = { fg = "black", bg = "yellow" }
+"ui.cursor.insert" = { modifiers = ["reversed"] }
+"ui.cursorline.primary" = { bg = "gray2" }
+"ui.cursorcolumn.primary" = { bg = "gray2" }
+
+"ui.linenr" = { fg = "gray5", bg = "black" }
+"ui.linenr.selected" = { fg = "bright_white", bg = "gray2" }
+
+"ui.statusline" = { fg = "bright_white", bg = "gray4" }
+"ui.statusline.inactive" = { fg = "bright_black", bg = "gray3" }
+"ui.statusline.normal" = { fg = "black", bg = "bright_white", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "black", bg = "bright_green", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "black", bg = "bright_magenta", modifiers = ["bold"] }
+"ui.statusline.separator" = { fg = "gray5" }
+
+"ui.popup" = { fg = "white", bg = "gray2" }
+"ui.popup.info" = { fg = "white", bg = "gray2" }
+"ui.window" = { fg = "gray4" }
+"ui.help" = { fg = "white", bg = "gray2" }
+
+"ui.virtual.ruler" = { bg = "gray3" }
+"ui.virtual.whitespace" = { fg = "gray4" }
+"ui.virtual.indent-guide" = { fg = "gray3" }
+"ui.virtual.inlay-hint" = { fg = "bright_black", bg = "gray2" }
+"ui.virtual.jump-label" = { fg = "black", bg = "bright_yellow", modifiers = ["bold"] }
+"ui.virtual.wrap" = { fg = "gray4" }
+
+"ui.menu" = { fg = "white", bg = "gray2" }
+"ui.menu.selected" = { fg = "black", bg = "yellow" }
+
+"ui.selection" = { bg = "dark_blue" }
+"ui.selection.primary" = { bg = "dark_blue" }
+"ui.highlight" = { bg = "gray3" }
+
+# Diagnostics
+"warning" = { fg = "yellow" }
+"error" = { fg = "bright_red" }
+"info" = { fg = "cyan" }
+"hint" = { fg = "bright_black" }
+"diagnostic.error" = { underline = { color = "bright_red", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "yellow", style = "curl" } }
+"diagnostic.info" = { underline = { color = "cyan", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "bright_black", style = "curl" } }
+
+# Markup
+"markup.heading" = { fg = "blue", modifiers = ["bold"] }
+"markup.list" = { fg = "red" }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "bright_green", modifiers = ["underlined"] }
+"markup.link.text" = { fg = "bright_blue" }
+"markup.quote" = { fg = "bright_black" }
+"markup.raw" = { fg = "bright_green" }
+
+# Diff
+"diff.plus" = { fg = "bright_green" }
+"diff.minus" = { fg = "bright_red" }
+"diff.delta" = { fg = "bright_yellow" }
+
+# Syntax highlighting
+"attribute" = { fg = "bright_yellow" }
+"type" = { fg = "bright_yellow" }
+"type.builtin" = { fg = "bright_yellow" }
+"constructor" = { fg = "bright_blue" }
+"constant" = { fg = "yellow" }
+"constant.builtin" = { fg = "yellow", modifiers = ["bold"] }
+"constant.character.escape" = { fg = "bright_magenta" }
+"constant.numeric" = { fg = "yellow" }
+"string" = { fg = "bright_green" }
+"string.regexp" = { fg = "cyan" }
+"string.special" = { fg = "bright_cyan" }
+"comment" = { fg = "bright_black", modifiers = ["italic"] }
+"variable" = { fg = "white" }
+"variable.builtin" = { fg = "orange" }
+"variable.parameter" = { fg = "bright_white" }
+"variable.other.member" = { fg = "cyan" }
+"label" = { fg = "magenta" }
+"punctuation" = { fg = "bright_black" }
+"punctuation.delimiter" = { fg = "bright_black" }
+"punctuation.bracket" = { fg = "white" }
+"keyword" = { fg = "red" }
+"keyword.control" = { fg = "red" }
+"keyword.control.conditional" = { fg = "red" }
+"keyword.control.repeat" = { fg = "red" }
+"keyword.control.import" = { fg = "magenta" }
+"keyword.control.return" = { fg = "red", modifiers = ["bold"] }
+"keyword.control.exception" = { fg = "red" }
+"keyword.operator" = { fg = "red" }
+"keyword.directive" = { fg = "magenta" }
+"keyword.function" = { fg = "red" }
+"keyword.storage" = { fg = "red" }
+"operator" = { fg = "bright_orange" }
+"function" = { fg = "bright_blue" }
+"function.builtin" = { fg = "bright_blue" }
+"function.macro" = { fg = "teal" }
+"function.method" = { fg = "bright_blue" }
+"tag" = { fg = "blue" }
+"namespace" = { fg = "bright_yellow" }
+"special" = { fg = "bright_magenta" }
+
+[palette]
+black          = "#121110"
+red            = "#EF2F27"
+green          = "#519F50"
+yellow         = "#FBB829"
+blue           = "#2C78BF"
+magenta        = "#E02C6D"
+cyan           = "#0AAEB3"
+white          = "#C5B088"
+bright_black   = "#917E6B"
+bright_red     = "#F75341"
+bright_green   = "#98BC37"
+bright_yellow  = "#FED06E"
+bright_blue    = "#68A8E4"
+bright_magenta = "#FF5C8F"
+bright_cyan    = "#2BE4D0"
+bright_white   = "#FCE8C3"
+dark_green     = "#294229"
+dark_red       = "#4F2321"
+dark_blue      = "#1E5181"
+dim_green      = "#2E5C2E"
+orange         = "#FF5F00"
+bright_orange  = "#FF8700"
+teal           = "#008080"
+gray1          = "#1C1B19"
+gray2          = "#262522"
+gray3          = "#312F2C"
+gray4          = "#3B3935"
+gray5          = "#45433E"
+gray6          = "#504D47"
