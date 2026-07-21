@@ -1,5 +1,10 @@
 use std/util "path add"
 
+# Add env vars
+$env.EDITOR = "helix"
+$env.LANG = "en_US.UTF-8"
+$env.LC_ALL = "en_US.UTF-8"
+
 # Add to path
 path add ($env.home | path join ".local/bin")
 path add ($env.home | path join "go/bin")
@@ -18,7 +23,5 @@ load-env (fnm env --shell bash
 
 path add ($env.FNM_MULTISHELL_PATH | path join "bin")
 
-# Add env vars
-$env.EDITOR = "helix"
 
 zoxide init nushell | save -f ~/.zoxide.nu

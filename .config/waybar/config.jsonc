@@ -1,46 +1,61 @@
 // -*- mode: jsonc -*-
 {
 	"position": "bottom",
-	"height": 42,
-	"spacing": 4,
+	"height": 46,
+	"spacing": 12,
 	"modules-left": [
 		"niri/window"
 	],
 	"modules-center": [
 	],
 	"modules-right": [
+		"group/hardware",
 		"pulseaudio",
 		"network",
-		"power-profiles-daemon",
-		"cpu",
-		"memory",
-		"temperature",
-		"sway/language",
 		"battery",
-		"clock",
-		"idle_inhibitor"
+		"power-profiles-daemon",
+		"idle_inhibitor",
+		"clock"
 	],
+	"group/hardware": {
+		"orientation": "horizontal",
+		"modules": [
+			"cpu",
+			"memory",
+			"temperature"
+		]
+	},
 	"idle_inhibitor": {
 		"format": "{icon}",
 		"format-icons": {
-			"activated": "",
-			"deactivated": ""
+			"deactivated": "󰒲 ",
+			"activated": "󰒳 "
 		}
 	},
 	"clock": {
-		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-		"format-alt": "{:%Y-%m-%d}"
+		"format": "{:%H:%M\n%d.%m.%Y}",
+		"justify": "right",
+		"tooltip": false
+
 	},
 	"cpu": {
 		"format": "  {usage}%",
-		"tooltip": false
+		"tooltip": false,
+		"states": {
+			"warning": 70,
+			"critical": 90
+		}
 	},
 	"memory": {
-		"format": "  {}%"
+		"format": "  {}%",
+		"states": {
+			"warning": 70,
+			"critical": 90
+		}
 	},
 	"temperature": {
 		"critical-threshold": 80,
-		"format": "{icon} {temperatureC}°C",
+		"format": "{icon} {temperatureC} 󰔄 ",
 		"format-icons": [
 			"󰈸",
 			"",
@@ -54,24 +69,17 @@
 			"warning": 30,
 			"critical": 15
 		},
-		"format": "{icon} {capacity}%",
-		"format-full": "{capacity}%",
-		"format-charging": "󰂄 {capacity}%",
-		"format-plugged": " {capacity}%",
-		"format-alt": "{time} {icon}",
-		// "format-good": "", // An empty format will hide the module
-		// "format-full": "",
+		"format": "{icon}",
+		"format-full": " ",
+		"format-charging": "",
+		"format-plugged": "",
+		"format-alt": "{icon} {capacity}%",
 		"format-icons": [
-			"󰂎",
-			"󰁺",
-			"󰁻",
-			"󰁼",
-			"󰁽",
-			"󰁾",
-			"󰁿",
-			"󰂀",
-			"󰂁",
-			"󰂂"
+			" ",
+			" ",
+			" ",
+			" ",
+			" ",
 		]
 	},
 	"power-profiles-daemon": {
@@ -79,38 +87,39 @@
 		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
 		"tooltip": true,
 		"format-icons": {
-			"default": "",
-			"performance": "",
-			"balanced": "󰗑",
-			"power-saver": "󰔱"
+			"default": " ",
+			"performance":  " ",
+			"balanced": "󰗑 ",
+			"power-saver": "󰔱 "
 		}
 	},
+
 	"network": {
-		"format-wifi": "{essid} ({signalStrength}%) ",
-		"format-ethernet": "{ipaddr}/{cidr} 󰊗",
-		"tooltip-format": "{ifname} via {gwaddr} 󰊗",
-		"format-linked": "{ifname} (No IP) 󰊗",
-		"format-disconnected": "Disconnected ⚠",
-		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+		"tooltip": true,
+		"tooltip-format": "{essid}\n{ifname}: {ipaddr}/{cidr}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀 ",
+    "format-disconnected": "󰤭 ",
+    "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
 	},
 	"pulseaudio": {
-		"format": "{volume}% {icon} {format_source}",
-		"format-bluetooth": "{volume}% {icon} {format_source}",
-		"format-bluetooth-muted": "󰅶 {icon} {format_source}",
-		"format-muted": "󰅶 {format_source}",
-		"format-source": "{volume}% ",
-		"format-source-muted": "",
+		"format": "{icon}",
+		"format-bluetooth": "󰂰 ",
+		"format-bluetooth-muted": " ",
+		"format-muted": " ",
+		"format-source": " {volume}%",
+		"format-source-muted": " ",
 		"format-icons": {
-			"headphone": "",
-			"hands-free": "󰂑",
-			"headset": "󰂑",
-			"phone": "",
-			"portable": "",
-			"car": "",
+			"headphone": " ",
+			"hands-free": "󰂑 ",
+			"headset": " ",
+			"phone": " ",
+			"portable": " ",
+			"car": " ",
 			"default": [
-				"",
-				"",
-				""
+				" ",
+				" ",
+				" "
 			]
 		},
 		"on-click": "pavucontrol"

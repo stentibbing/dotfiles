@@ -1,7 +1,7 @@
 * {
   font-family: "UbuntuMono Nerd Font", sans-serif, Arial;
   font-size: 15px;
-  color: #ffffff;
+  color: #FCE8C3;
 }
 
 window#waybar {
@@ -9,7 +9,8 @@ window#waybar {
 }
 
 window#waybar > box {
-  background: #1e1e2e;
+  background: #121110;
+  padding: 0 20px;
 }
 
 button {
@@ -17,18 +18,33 @@ button {
 }
 
 #clock,
-#battery,
-#cpu,
-#memory,
-#disk,
+#hardware,
 #temperature,
 #network,
 #pulseaudio,
 #wireplumber,
-#mode,
 #idle_inhibitor,
 #power-profiles-daemon,
 #window,
 #workspaces {
-  margin: 0 10px;
+  margin: 0 4px;
+}
+
+#cpu,
+#memory,
+#temperature {
+  margin: 0 6px;
+}
+
+#cpu.warning,
+#memory.warning,
+#temperature.warning {
+  margin: 0 12px;
+  color: #fbb829;
+}
+
+#cpu.critical,
+#memory.critical,
+#temperature.critical {
+  color: #ef2f27;
 }
