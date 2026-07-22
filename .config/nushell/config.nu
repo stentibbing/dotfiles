@@ -2,7 +2,6 @@ $env.config = {
     show_banner: false
     buffer_editor: "/usr/bin/helix"
     edit_mode: vi
-
 }
 
 # Aliases
@@ -12,7 +11,7 @@ alias y = yazi
 alias ai = claude
 
 # Functions
-def l [] { ls -l | select name mode user group size }
+def l [] { ls -la | select name mode user group size }
 
 # Zoxide 
 source ~/.zoxide.nu
