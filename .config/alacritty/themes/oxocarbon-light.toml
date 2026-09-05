@@ -1,0 +1,72 @@
+# Oxocarbon Light
+# Ported from oxocarbon.nvim (nyoom-engineering) — https://github.com/nyoom-engineering/oxocarbon.nvim
+# Palette (light): base00 #ffffff  base01 #f2f2f2  base02 #d0d0d0  base03 #161616
+#                  base04 #37474f  base05 #90a4ae  base06 #525252
+#                  #08bdba #ff7eb6 #ee5396 #ff6f00 #0f62fe #673ab7 #42be65 #be95ff #ffab91
+# ANSI slots follow the plugin's own terminal_color_* mapping.
+
+[colors.primary]
+background      = "#ffffff"
+foreground     = "#37474f"
+dim_foreground  = "#90a4ae"
+bright_foreground = "#161616"
+
+[colors.cursor]
+text   = "#ffffff"
+cursor = "#37474f"
+
+[colors.vi_mode_cursor]
+text   = "#ffffff"
+cursor = "#0f62fe"
+
+[colors.search.matches]
+foreground = "#ffffff"
+background = "#ee5396"
+
+[colors.search.focused_match]
+foreground = "#ffffff"
+background = "#42be65"
+
+[colors.footer_bar]
+foreground = "#37474f"
+background = "#f2f2f2"
+
+[colors.hints.start]
+foreground = "#ffffff"
+background = "#0f62fe"
+
+[colors.hints.end]
+foreground = "#ffffff"
+background = "#ee5396"
+
+[colors.selection]
+text       = "CellForeground"
+background = "#d0d0d0"
+
+[colors.normal]
+black   = "#f2f2f2"
+red     = "#0f62fe"
+green   = "#be95ff"
+yellow  = "#42be65"
+blue    = "#ee5396"
+magenta = "#ffab91"
+cyan    = "#ff7eb6"
+white   = "#90a4ae"
+
+[colors.bright]
+black   = "#161616"
+red     = "#0f62fe"
+green   = "#be95ff"
+yellow  = "#42be65"
+blue    = "#ee5396"
+magenta = "#ffab91"
+cyan    = "#08bdba"
+white   = "#525252"
+
+[[colors.indexed_colors]]
+index = 16
+color = "#ff6f00"
+
+[[colors.indexed_colors]]
+index = 17
+color = "#673ab7"

@@ -1,0 +1,21 @@
+[general]
+import = [
+	"themes/oxocarbon-dark.toml",
+]
+
+[window]
+padding = {
+	x = 10, 
+	y = 10
+}
+dynamic_padding = true
+
+[font]
+normal = {
+	family = "Iosevka Nerd Font",
+}
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
