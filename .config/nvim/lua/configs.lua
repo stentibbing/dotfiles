@@ -12,7 +12,6 @@ opt.number = true
 opt.relativenumber = true
 opt.numberwidth = 2
 opt.wrap = false
-opt.cursorline = true
 opt.scrolloff = 8
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.undofile = true
