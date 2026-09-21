@@ -4,7 +4,7 @@ local ensure_installed = {
     "lua", "vim", "vimdoc", "query",
     "bash", "python", "javascript", "typescript", "tsx",
     "json", "yaml", "toml", "markdown", "markdown_inline",
-    "html", "css", "svelte",
+    "html", "css", "svelte", "latex"
 }
 
 require("nvim-treesitter").install(ensure_installed)
