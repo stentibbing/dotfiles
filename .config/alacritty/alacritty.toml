@@ -1,6 +1,6 @@
 [general]
 import = [
-	"themes/oxocarbon-dark.toml",
+	"themes/rose-pine.toml",
 ]
 
 [window]
