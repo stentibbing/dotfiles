@@ -4,7 +4,8 @@ vim.lsp.enable({
   "lua_ls",
   "svelte",
   "cssls",
-  "ts_ls"
+  "ts_ls",
+  "lemminx"
 })
 
 vim.diagnostic.config({ virtual_text = true })
